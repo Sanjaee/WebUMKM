@@ -42,9 +42,7 @@ const ProductDetail = () => {
 
   const sliderSettings = {
     infinite: true,
-    speed: 500,
-    autoplaySpeed: 2000,
-    autoplay: true,
+    speed: 400,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
