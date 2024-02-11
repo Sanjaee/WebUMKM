@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-import DetailProducts from "./assets/pages/DetailProducts";
 import Home from "./assets/pages/Home";
 import Notification from "./assets/pages/Notification";
 import CartProducts from "./assets/pages/CartProducts";
+import ProductDetail from "./assets/pages/DetailProducts";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/product/:id",
-    element: <DetailProducts />,
+    element: <ProductDetail />,
   },
   {
     path: "/notification",

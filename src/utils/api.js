@@ -13,7 +13,18 @@ const api = {
       throw error;
     }
   },
-  // Add more API functions as needed
+  getItemById: async (id) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/items/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error(`Error fetching product with ID ${id}:`, error);
+      throw error;
+    }
+  },
 };
 
 export default api;
