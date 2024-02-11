@@ -82,7 +82,7 @@ const Products = () => {
                       loading="lazy"
                     />
                     <div className="p-2 w-full min-h-[140px]">
-                      <p className="text-[17px] font-normal line-clamp-2">
+                      <p className="text-[17px] font-normal line-clamp-2 ">
                         {product.nama_product}
                       </p>
                       <p className="text-[17px] font-bold mt-1">
