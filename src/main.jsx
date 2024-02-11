@@ -7,6 +7,7 @@ import Home from "./assets/pages/Home";
 import Notification from "./assets/pages/Notification";
 import CartProducts from "./assets/pages/CartProducts";
 import ProductDetail from "./assets/pages/DetailProducts";
+import ProductSearch from "./assets/pages/ProductSearch";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <CartProducts />,
+  },
+  {
+    path: "/products/:id",
+    element: <ProductSearch />,
   },
 ]);
 

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import api from "../../utils/api";
 import NavbarDetailProduct from "../components/NavbarDetailProduct";
 
@@ -37,17 +40,33 @@ const ProductDetail = () => {
     );
   }
 
+  const sliderSettings = {
+    infinite: true,
+    speed: 500,
+    autoplaySpeed: 2000,
+    autoplay: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
   const discountedPrice = product.harga * 0.8;
   const discountAmount = product.harga - discountedPrice;
 
   return (
     <div className="bg-gray-100 md:flex">
       <NavbarDetailProduct />
-      <img
-        className="w-full h-[400px] object-cover object-center md:w-[240px] md:h-[240px] mt-14"
-        src={product.gambar}
-        alt={product.altText}
-      />
+      <Slider {...sliderSettings}>
+        {product.detailproduct.map((slide) => (
+          <div key={slide._id}>
+            <img
+              className="w-full h-[400px] object-cover object-center md:w-[240px] md:h-[240px] mt-14 "
+              src={slide.image}
+              alt={product.nama_product}
+            />
+          </div>
+        ))}
+      </Slider>
       <div className="p-4 shadow-lg bg-white">
         <p className="font-bold text-[18px]">{formatRupiah(discountedPrice)}</p>
         <div className="flex">

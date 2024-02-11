@@ -1,7 +1,56 @@
-import "boxicons";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import "boxicons";
+import api from "../../utils/api"; // Import your API module
 
 const Navbars = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+
+  const handleSearchChange = async (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    try {
+      // Perform search using API call
+      const data = await api.getItems();
+      const filteredResults = data.filter((item) =>
+        item.nama_product.toLowerCase().includes(query.toLowerCase())
+      );
+
+      setSearchResults(filteredResults);
+      setShowResults(true);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
+
+  const handleResultClick = (result) => {
+    // Perform an action when a search result is clicked
+    // For example, navigate to a product page based on the clicked result
+    console.log("Clicked result:", result);
+    // Add your navigation logic here
+    // For demonstration purposes, I'm just clearing the search input and hiding the results.
+    setSearchQuery("");
+    setShowResults(false);
+  };
+
+  // Hide results when clicking outside the search input
+  useEffect(() => {
+    const handleClickOutside = () => {
+      if (searchResults.length > 0) {
+        setShowResults(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [searchResults]);
+
   return (
     <div className="w-full  flex justify-between items-center pl-3 h-20 border pr-3 fixed bg-white top-0 z-50 shadow-sm">
       <div className="flex relative">
@@ -18,7 +67,26 @@ const Navbars = () => {
           className="border focus:border-none focus:outline-none focus:ring p-1 rounded-lg pl-8"
           type="text"
           placeholder="Cari di Tokopedia"
+          value={searchQuery}
+          onChange={handleSearchChange}
         />
+
+        {/* Display search results */}
+        {showResults && (
+          <div className="absolute top-full left-0 w-full bg-white border border-t-0 rounded-b-lg">
+            {searchResults.map((result) => (
+              <div
+                key={result._id}
+                className="p-2 cursor-pointer hover:bg-gray-100"
+                onClick={() => handleResultClick(result)}
+              >
+                <Link to={`/products/${result._id}`}>
+                  {result.nama_product}
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <div className="flex items-center">
         <Link to="/notification" className="mr-3">
