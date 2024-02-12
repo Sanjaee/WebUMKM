@@ -74,12 +74,12 @@ const Navbars = () => {
 
         {/* Display search results */}
         {showResults && (
-          <div className="absolute top-full left-0 w-full bg-white border border-t-0 rounded-b-lg">
+          <div className="absolute top-full left-0 w-full bg-white border border-t-0 rounded-b-lg overflow-y-scroll max-h-50 shadow-2xl sm:max-h-[280px] mt-2">
             {searchResults.map((result) => (
               <div key={result._id} onClick={() => handleResultClick(result)}>
                 <Link to={`/products/${result._id}`}>
-                  <div className="p-2 cursor-pointer hover:bg-gray-100">
-                    {result.nama_product}
+                  <div className="p-2 cursor-pointer hover:bg-gray-100 overflow-hidden">
+                    {result.nama_product.split(" ").slice(0, 4).join(" ")}
                   </div>
                 </Link>
               </div>

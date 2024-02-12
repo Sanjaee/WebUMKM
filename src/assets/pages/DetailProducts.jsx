@@ -80,7 +80,26 @@ const ProductDetail = () => {
             </p>
           </div>
           <p className="text-[18px] mt-4">{product.nama_product}</p>
-          <p className="text-sm mt-4">Terjual {product.rate}+</p>
+          <div className="flex items-center">
+            <p className="text-sm mt-4  text-black">
+              Terjual {product.terjual}+
+            </p>
+            <a className="  items-center">
+              <p className="text-sm mt-4 ml-2 text-black border border-gray-400 rounded-lg px-2 py-[7px] flex items-center justify-center  font-bold hover:bg-slate-100">
+                <svg
+                  className="unf-icon mr-1"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  fill="var(--YN300, #FFC400)"
+                >
+                  <path d="M21.57 9.14a2.37 2.37 0 00-1.93-1.63L15.9 7l-1.68-3.4a2.38 2.38 0 00-4.27 0L8.27 7l-3.75.54a2.39 2.39 0 00-1.32 4.04l2.71 2.64L5.27 18a2.38 2.38 0 002.35 2.79 2.42 2.42 0 001.11-.27l3.35-1.76 3.35 1.76a2.41 2.41 0 002.57-.23 2.369 2.369 0 00.89-2.29l-.64-3.73L21 11.58a2.38 2.38 0 00.57-2.44z"></path>
+                </svg>
+                {product.rate}
+                <span className="ml-1 text-gray-500">({product.terjual})</span>
+              </p>
+            </a>
+          </div>
         </div>
 
         <div className="p-4 mt-4 shadow-lg bg-white">
@@ -97,6 +116,26 @@ const ProductDetail = () => {
             <h1 className="font-bold">Deskripsi Produk</h1>
             <p className="text-sm mt-4">{product.deskripsi}</p>
           </div>
+        </div>
+        {/* Tombol chekout Mobile */}
+        <div className="flex items-center fixed bottom-0 w-full h-[60px] bg-white px-2 border shadow-2xl justify-center">
+          <a href="" className="border border-gray-800 bg-white p-2 rounded-lg">
+            <svg
+              className="unf-icon"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="var(--NN1000, #000000)"
+            >
+              <path d="M3.66 21.67a.84.84 0 0 0 .34.08.74.74 0 0 0 .45-.15l3.8-2.85H17A3.71 3.71 0 0 0 20.75 15V7A3.71 3.71 0 0 0 17 3.25H7A3.71 3.71 0 0 0 3.25 7v14a.76.76 0 0 0 .41.67ZM6.13 4.907A2.2 2.2 0 0 1 7 4.75h10A2.2 2.2 0 0 1 19.25 7v8A2.2 2.2 0 0 1 17 17.25H8a.74.74 0 0 0-.45.15l-2.8 2.1V7a2.2 2.2 0 0 1 1.38-2.093ZM16 9.74H8a.75.75 0 0 1 0-1.5h8a.75.75 0 1 1 0 1.5Zm-3 4H8a.75.75 0 1 1 0-1.5h5a.75.75 0 1 1 0 1.5Z"></path>
+            </svg>
+          </a>
+          <button className="ml-2 w-full h-10 border text-green-500 font-bold border-green-500 rounded-lg">
+            Beli
+          </button>
+          <button className="ml-2 w-full h-10 border text-white font-bold rounded-lg bg-green-500">
+            + Keranjang
+          </button>
         </div>
       </div>
       {/* pc */}
