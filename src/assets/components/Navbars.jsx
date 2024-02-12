@@ -52,7 +52,8 @@ const Navbars = () => {
   }, [searchResults]);
 
   return (
-    <div className="w-full  flex justify-between items-center pl-3 h-20 border pr-3 fixed bg-white top-0 z-50 shadow-sm">
+    <div className="w-full  flex justify-between items-center  h-20 border px-3 fixed bg-white top-0 z-50 shadow-sm sm:h-[120px]">
+      {/* mobile */}
       <div className="flex relative">
         <svg
           className="mr-2 absolute top-1 pl-2"
@@ -75,13 +76,11 @@ const Navbars = () => {
         {showResults && (
           <div className="absolute top-full left-0 w-full bg-white border border-t-0 rounded-b-lg">
             {searchResults.map((result) => (
-              <div
-                key={result._id}
-                className="p-2 cursor-pointer hover:bg-gray-100"
-                onClick={() => handleResultClick(result)}
-              >
+              <div key={result._id} onClick={() => handleResultClick(result)}>
                 <Link to={`/products/${result._id}`}>
-                  {result.nama_product}
+                  <div className="p-2 cursor-pointer hover:bg-gray-100">
+                    {result.nama_product}
+                  </div>
                 </Link>
               </div>
             ))}

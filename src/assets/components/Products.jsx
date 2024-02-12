@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../../utils/api"; // Adjust the path accordingly
 import { Link } from "react-router-dom";
 import ProductCardSkeleton from "./SkeletonProducts";
+import "boxicons";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -60,7 +61,7 @@ const Products = () => {
           Electonik
         </button>
       </div>
-      <div className="grid grid-cols-2 gap-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mt-3 pl-2 pr-2 sm:pr-6 sm:pl-6 ">
+      <div className="grid grid-cols-2 gap-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mt-3 pl-2 pr-2 sm:pr-6 sm:pl-6 pb-[200px]">
         {loading
           ? Array.from({ length: 12 }).map((_, index) => (
               <ProductCardSkeleton key={index} />
@@ -81,7 +82,7 @@ const Products = () => {
                       alt={product.altText}
                       loading="lazy"
                     />
-                    <div className="p-2 w-full min-h-[140px]">
+                    <div className="p-2 w-full min-h-[160px]">
                       <p className="text-[17px] font-normal line-clamp-2 ">
                         {product.nama_product}
                       </p>
@@ -96,9 +97,27 @@ const Products = () => {
                           {discountPercentage}%
                         </p>
                       </div>
+                      <div className="flex items-center mt-1">
+                        <box-icon
+                          name="current-location"
+                          color="#12d207"
+                        ></box-icon>
+                        <p className=" ml-1 text-[#6D7588] text-[12px]">
+                          {product.lokasi}
+                        </p>
+                      </div>
 
-                      <p className="text-[12px]">
-                        ⭐5.0 | {product.rate} Terjual
+                      <p className="text-[12px] mt-1 text-[#6D7588] flex line-clamp-1">
+                        <svg
+                          className="unf-icon mr-1"
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                          fill="var(--YN300, #FFC400)"
+                        >
+                          <path d="M21.57 9.14a2.37 2.37 0 00-1.93-1.63L15.9 7l-1.68-3.4a2.38 2.38 0 00-4.27 0L8.27 7l-3.75.54a2.39 2.39 0 00-1.32 4.04l2.71 2.64L5.27 18a2.38 2.38 0 002.35 2.79 2.42 2.42 0 001.11-.27l3.35-1.76 3.35 1.76a2.41 2.41 0 002.57-.23 2.369 2.369 0 00.89-2.29l-.64-3.73L21 11.58a2.38 2.38 0 00.57-2.44z"></path>
+                        </svg>
+                        {product.rate} | {product.terjual} Terjual
                       </p>
                     </div>
                   </div>

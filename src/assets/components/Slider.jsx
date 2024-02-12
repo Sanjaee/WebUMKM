@@ -39,7 +39,7 @@ const SliderTop = () => {
   ];
 
   return (
-    <div className="relative w-full max-w-[1200px] mt-20 sm:mt-24 sm:rounded-xl sm:pr-6 sm:pl-6">
+    <div className="relative w-full max-w-[1200px] mt-20 sm:mt-32 sm:rounded-xl sm:pr-6 sm:pl-6">
       <Slider {...settings} ref={sliderRef}>
         {sliderData.map((slide) => (
           <div

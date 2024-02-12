@@ -60,7 +60,7 @@ const ProductDetail = () => {
           {product.detailproduct.map((slide) => (
             <div key={slide._id}>
               <img
-                className="w-full h-[400px] object-cover object-center mt-14 "
+                className="w-full h-[400px] object-cover object-center mt-14"
                 src={slide.image}
                 alt={product.nama_product}
               />
@@ -102,23 +102,41 @@ const ProductDetail = () => {
       {/* pc */}
       <div className="hidden  bg-white sm:flex">
         <Slider
-          className="w-full sm:w-[240px] sm:h-[240px]  sm:mt-[121px] sm:rounded-xl ml-8"
+          className="w-full sm:w-[270px] sm:h-[280px]  sm:mt-[161px] sm:rounded-xl ml-8"
           {...sliderSettings}
         >
           {product.detailproduct.map((slide) => (
             <div key={slide._id}>
               <img
-                className="w-full  object-cover object-center sm:w-[240px] sm:h-[240px]  sm:rounded-xl "
+                className="w-full  object-cover object-center sm:w-[270px] sm:h-[280px]  sm:rounded-xl "
                 src={slide.image}
                 alt={product.nama_product}
               />
             </div>
           ))}
         </Slider>
-        <div className="sm:flex sm:flex-col mt-[121px] w-[360px] ml-10">
+        <div className="sm:flex sm:flex-col mt-[161px] w-[360px] ml-10">
           <div className=" bg-white">
-            <p className="text-xl font-bold">{product.nama_product}</p>
-            <p className="text-sm mt-1">Terjual {product.rate}+</p>
+            <p className="text-xl font-extrabold">{product.nama_product}</p>
+            <div className="flex items-center">
+              <p className="text-md mt-1">Terjual {product.terjual}+</p>
+              <span className="items-center px-2">•</span>
+              <svg
+                className="unf-icon"
+                viewBox="0 0 24 24"
+                width="16"
+                height="16"
+                fill="var(--YN300, #FFC400)"
+              >
+                <path d="M21.57 9.14a2.37 2.37 0 00-1.93-1.63L15.9 7l-1.68-3.4a2.38 2.38 0 00-4.27 0L8.27 7l-3.75.54a2.39 2.39 0 00-1.32 4.04l2.71 2.64L5.27 18a2.38 2.38 0 002.35 2.79 2.42 2.42 0 001.11-.27l3.35-1.76 3.35 1.76a2.41 2.41 0 002.57-.23 2.369 2.369 0 00.89-2.29l-.64-3.73L21 11.58a2.38 2.38 0 00.57-2.44z"></path>
+              </svg>
+              <p className="ml-1 text-md">
+                {product.rate}{" "}
+                <span className="text-gray-500 font-semibold">
+                  ({product.terjual} rating)
+                </span>
+              </p>
+            </div>
             <p className="font-bold text-3xl mt-4">
               {formatRupiah(discountedPrice)}
             </p>
@@ -140,7 +158,7 @@ const ProductDetail = () => {
             </div>
           </div>
         </div>
-        <div className="hidden sm:block  w-[268px] h-[368px] mt-[121px] rounded-lg p-4 border border-gray-400 ml-10">
+        <div className="hidden sm:block  w-[268px] h-[368px] mt-[161px] rounded-lg p-4 border border-gray-400 ml-10">
           <h1 className="font-bold text-lg">Atur jumlah dan catatan</h1>
           {product.detailproduct.length > 0 && (
             <div
@@ -153,7 +171,7 @@ const ProductDetail = () => {
                 alt={product.nama_product}
               />
               <p className="text-md ml-3 mt-2 font-bold">
-                {product.detailproduct[0].size}Black
+                {product.detailproduct[0].size} <span>{product.type}</span>
               </p>
             </div>
           )}
@@ -184,17 +202,17 @@ const ProductDetail = () => {
               </button>
             </div>
             <p className="ml-2">
-              Stok :<b>10</b>
+              Stok: <b>{product.stok}</b>
             </p>
           </div>
 
           <div className="flex justify-between mt-9">
             <p className="mt-8 text-gray-400">Subtotal</p>
             <div>
-              <p className="text-md  text-gray-500 line-through ml-1 ">
+              <p className="text-[18px]  text-gray-500 line-through ml-1 text-end">
                 {formatRupiah(product.harga)}
               </p>
-              <p className="font-bold text-xl ">
+              <p className="font-bold text-[18px] ">
                 {formatRupiah(discountedPrice)}
               </p>
             </div>
